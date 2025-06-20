@@ -1,1 +1,25 @@
-<h1> This is the login page </h1>
+{% extends 'base.html' %}  
+{% block title %} Vechicle Parking App - Login page {% endblock %}   
+
+{% block content %}
+<div class="page-wrapper">
+  <h1 class="text-center">Welcome TO Vechicle Parking App</h1>
+
+  <div class="login-container">
+    <form action="/admin" method="post">
+      <div class="form-group">
+        <label>USERNAME</label>
+        <input type="text" class="form-control" name="username" placeholder="Enter your USERNAME here" requiredminlength="3" maxlength="20" >
+      </div>
+
+      <div class="form-group">
+        <label>PASSWORD</label>
+        <input type="password" class="form-control" name="password" placeholder="Enter your PASSWORD here"  requiredminlength="3" maxlength="20">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
