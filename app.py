@@ -62,6 +62,7 @@ def create_database():
 
 
 @app.route("/login", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def login_page():
     if request.method == 'POST':
         username = request.form.get("username")
@@ -74,7 +75,6 @@ def login_page():
         user = User.query.filter_by(username=username, password=password).first()
 
         if user:
-            flash('Login successful!', 'success')
             return redirect(url_for('user_page'))  # You can define user_dashboard route
         else:
             flash('Invalid username or password.', 'danger')
