@@ -1,25 +1,30 @@
-{% extends 'base.html' %}  
-{% block title %} Vechicle Parking App - Login page {% endblock %}   
+{% extends 'base.html' %}
+{% block title %} Vehicle Parking App - Login Page {% endblock %}
 
 {% block content %}
-<div class="page-wrapper">
-  <h1 class="text-center">Welcome TO Vechicle Parking App</h1>
-
+<div class="page-wrapper d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <div class="login-container">
-    <form action="/admin" method="post">
+    <h1 class="text-center mb-4">Vechicle Parking System</h1>
+
+    <form action="/login" method="post">  <!-- Change action to /login if login route -->
       <div class="form-group">
         <label>USERNAME</label>
-        <input type="text" class="form-control" name="username" placeholder="Enter your USERNAME here" requiredminlength="3" maxlength="20" >
+        <input type="text" class="form-control" name="username" placeholder="Enter your USERNAME here" required minlength="3" maxlength="20">
       </div>
 
       <div class="form-group">
         <label>PASSWORD</label>
-        <input type="password" class="form-control" name="password" placeholder="Enter your PASSWORD here"  requiredminlength="3" maxlength="20">
+        <input type="password" class="form-control" name="password" placeholder="Enter your PASSWORD here" required minlength="3" maxlength="20">
       </div>
 
-      <button type="submit" class="btn btn-primary">Login</button>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mt-3">Login</button>
+      </div>
+
+      <div class="text-center mt-3">
+        <p>New User? <a href="/register">Register Here</a></p>
+      </div>
     </form>
   </div>
 </div>
 {% endblock %}
-
