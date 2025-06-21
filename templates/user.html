@@ -1,30 +1,52 @@
 {% extends 'base.html' %}
 
 {% block title %}
-        Vechicle Parking App - User page
-      {% endblock %}
+    Vehicle Parking App - User Page
+{% endblock %}
 
-{% block content %}
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Navbar w/ text</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-    </ul>
-    <span class="navbar-text">
-      Welcome to the Admin Page
-    </span>
+{% block navbar %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container d-flex justify-content-between align-items-center">
+
+    <!-- Left: User Dashboard -->
+    <a class="navbar-brand font-weight-bold text-white" href="/user">User Dashboard</a>
+
+    <!-- Toggler + Right Links -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav text-center">
+        <li class="nav-item"><a class="nav-link" href="/user">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/summary">Summary</a></li>
+        <li class="nav-item"><a class="nav-link" href="/login">Logout</a></li>
+      </ul>
+    </div>
+
   </div>
 </nav>
+
 {% endblock %}
+
+{% block content %}
+
+<div class="container mt-3">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+          {{ message }}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+{% endblock %}
+

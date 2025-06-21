@@ -79,3 +79,26 @@ form button {
 form button:hover {
     background-color: #ff0a0a;
 }
+
+/* Ensure the parent container has a positioning context if using absolute */
+/* If the .container itself is the body or a top-level wrapper, fixed is usually better */
+
+.flash-message-fixed {
+    position: fixed; /* Positions relative to the viewport */
+    top: 20px; /* Distance from the top of the viewport */
+    left: 50%;
+    transform: translateX(-50%); /* Centers the element horizontally */
+    z-index: 1050; /* Higher than Bootstrap's navbars (1030) and modals (1040) */
+    width: 80%; /* Adjust as needed, or max-width */
+    max-width: 600px; /* Limits the width for better readability on large screens */
+    /* Add any other styling like padding, border-radius, etc. */
+}
+
+/* Remove or correct the problematic margin-top from your block's inline style */
+/* If this was meant to be general styling for that block, put it in your CSS file */
+.container-fluid.text-center.font-weight-bold.py-3.shadow {
+    background-color: aquamarine;
+    /* Remove the invalid margin-top: -37% ma; or replace with a valid one if needed */
+    /* If you want specific spacing, use valid units like px, em, rem, or % */
+    margin-top: 20px; /* Example: add some top margin if desired */
+}

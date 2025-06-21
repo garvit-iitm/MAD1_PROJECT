@@ -1,7 +1,6 @@
-from flask import Flask,render_template,request,redirect,url_for,session,flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-
 
 app = Flask(__name__)
 
@@ -51,7 +50,7 @@ class Reservation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     spot_id = db.Column(db.Integer, db.ForeignKey('parking_spot.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    parking_timestamp = db.Column(db.DateTime, nullable=False, default=datetime)
+    parking_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     leaving_timestamp = db.Column(db.DateTime, nullable=True)
     parking_cost = db.Column(db.Float, nullable=False)
 
@@ -59,7 +58,6 @@ def create_database():
     with app.app_context():
         db.create_all()
         print("Database and tables created successfully!")
-
 
 @app.route("/login", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
@@ -75,14 +73,19 @@ def login_page():
         user = User.query.filter_by(username=username, password=password).first()
 
         if user:
-            return redirect(url_for('user_page'))  # You can define user_dashboard route
+            session['username'] = username   # 👈 Store username in session here
+            flash(f'Login successful! Welcome to the User Dashboard, { username }!', 'success')
+            return redirect(url_for('user_page'))  
+        
+        elif username == 'admin' and password == 'admin123':
+            session['username'] = username 
+            return redirect(url_for('admin_page'))  # Redirect to admin page if credentials match
+        
         else:
             flash('Invalid username or password.', 'danger')
             return redirect(url_for('login_page'))
 
     return render_template('login.html')
-
-    
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -99,15 +102,27 @@ def register():
         db.session.add(new_user)
         db.session.commit()
 
-        
+        flash('Registration successful! Please login.', 'success')
         return redirect(url_for('login_page'))
 
     return render_template('register.html')
 
-
-@app.route("/user",methods = ["GET" , "POST"])
+@app.route("/user", methods=["GET", "POST"])
 def user_page():
-    return render_template('user.html')
+    if 'username' in session:
+        username = session['username']   # Get username from session
+        return render_template('user.html', username=username)
+    else:
+        flash("Please login first.", "warning")
+        return redirect(url_for('login_page')) 
+    
+@app.route("/admin", methods=["GET", "POST"])
+def admin_page():
+    username = session.get('username')   # Store username in session here
+    flash(f'Login successful! Welcome to the Admin Dashboard, { username }!', 'success')
+    return render_template('admin.html')
+    
+
 
 if __name__ == "__main__":
     create_database()

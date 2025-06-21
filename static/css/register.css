@@ -17,3 +17,8 @@
     font-size: 28px;
     font-family:  'Arial', sans-serif;
 }
+
+.conrtainer {
+    margin: auto;
+    align-items: center;
+}
