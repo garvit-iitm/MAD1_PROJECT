@@ -1,9 +1,5 @@
 {% extends 'base.html' %}
 
-{% block title %}
-    Vehicle Parking App - User Page
-{% endblock %}
-
 {% block navbar %}
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container justify-content-center">
@@ -23,21 +19,19 @@
 {% endblock %}
 
 {% block content %}
+<div class="container mt-5">
+  <h3 class="text-center mb-4 bg-warning py-2 rounded">Occupied Parking Spot Details</h3>
 
-<div class="container mt-3">
-  {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-      {% for category, message in messages %}
-        <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-          {{ message }}
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-      {% endfor %}
-    {% endif %}
-  {% endwith %}
+  <div class="card shadow p-4">
+    <p><strong>ID:</strong> {{ spot.id }}</p>
+    <p><strong>Customer ID:</strong> {{ reservation.user_id if reservation else 'N/A' }}</p>
+    <p><strong>Vehicle Number:</strong> {{ reservation.vehicle_number if reservation else 'N/A' }}</p>
+    <p><strong>Date/Time of Parking:</strong> {{ reservation.parking_timestamp if reservation else 'N/A' }}</p>
+    <p><strong>Estimated Parking Cost:</strong> ₹{{ reservation.parking_cost if reservation else 'N/A' }}</p>
+    
+    <div class="text-center mt-3">
+      <a href="{{ url_for('lot_details', lot_id=spot.lot_id) }}" class="btn btn-primary">Close</a>
+    </div>
+  </div>
 </div>
-
 {% endblock %}
-

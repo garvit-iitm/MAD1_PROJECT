@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Parking Spot Details{% endblock %}
+
+{% block navbar %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container justify-content-center">
+      <a class="navbar-brand font-weight-bold text-white" href="/admin">Welcome to Admin</a>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav text-center">
+          <li class="nav-item"><a class="nav-link" href="/admin">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/admin/admin_users">Users</a></li>
+          <li class="nav-item"><a class="nav-link" href="/search">Search</a></li>
+          <li class="nav-item"><a class="nav-link" href="/admin/summary">Summary</a></li>
+          <li class="nav-item"><a class="nav-link" href="/editprofile">Edit Profile</a></li>
+          <li class="nav-item"><a class="nav-link" href="/login">Logout</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+
+  <h3 class="text-center mb-4">View/Delete Parking Spot</h3>
+
+  <div class="card shadow-sm mx-auto" style="max-width: 400px;">
+    <div class="card-body">
+      <p><strong>ID:</strong> {{ spot.id }}</p>
+      <p><strong>Status:</strong>
+        {% if spot.status == 'O' %}
+          <!-- Proper clickable button for Occupied details -->
+          <a href="{{ url_for('occupied_spot_details', spot_id=spot.id) }}" 
+             class="btn btn-sm btn-danger mt-2">
+             View Occupied Details
+          </a>
+        {% else %}
+          <span class="text-success font-weight-bold">Available</span>
+        {% endif %}
+      </p>
+
+      <div class="d-flex justify-content-between mt-4">
+        <form action="{{ url_for('delete_spot', spot_id=spot.id) }}" method="POST">
+            <button type="submit" class="btn btn-danger btn-block" 
+                {% if spot.status == 'O' %} disabled {% endif %}>
+                Delete
+            </button>
+        </form>
+
+        <a href="{{ url_for('lot_details', lot_id=spot.lot_id) }}" class="btn btn-secondary btn-block ml-2">Close</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+{% endblock %}
