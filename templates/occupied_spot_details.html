@@ -27,7 +27,7 @@
   <div class="card shadow p-4">
     <p><strong>ID:</strong> {{ spot.id }}</p>
     <p><strong>Customer ID:</strong> {{ reservation.user_id if reservation else 'N/A' }}</p>
-    <p><strong>Vehicle Number:</strong> {{ reservation.vehicle_number if reservation else 'N/A' }}</p>
+    <p><strong>Vehicle Number:</strong> {{ reservation.vehicle_no if reservation else 'N/A' }}</p>
     <p><strong>Date/Time of Parking:</strong> {{ reservation.parking_timestamp if reservation else 'N/A' }}</p>
     <p><strong>Estimated Parking Cost:</strong> ₹{{ reservation.parking_cost if reservation else 'N/A' }}</p>
     

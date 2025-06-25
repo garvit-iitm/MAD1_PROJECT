@@ -351,7 +351,16 @@ def delete_spot(spot_id):
 def occupied_spot_details(spot_id):
     spot = ParkingSpot.query.get_or_404(spot_id)
     reservation = Reservation.query.filter_by(spot_id=spot.id).first()
-    return render_template('occupied_spot_details.html', spot=spot, reservation=reservation)
+
+    estimated_cost = "N/A"
+    if reservation:
+        lot = ParkingLot.query.get(spot.lot_id)
+        if reservation.parking_timestamp:
+            time_diff = (datetime.utcnow() - reservation.parking_timestamp).total_seconds() / 3600
+            estimated_cost = round(time_diff * lot.price, 2)
+
+    return render_template('occupied_spot_details.html', spot=spot, reservation=reservation, estimated_cost=estimated_cost)
+
 
 @app.route('/search', methods=['GET'])
 def search():
