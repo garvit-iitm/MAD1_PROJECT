@@ -41,4 +41,7 @@ class Reservation(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     parking_timestamp = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     leaving_timestamp = db.Column(db.DateTime, nullable=True)
+    vehicle_no = db.Column(db.String(50))
     parking_cost = db.Column(db.Float, nullable=False)
+    status = db.Column(db.String(1), nullable=False, default='O')  # 'O' for occupied, 'A' for out
+

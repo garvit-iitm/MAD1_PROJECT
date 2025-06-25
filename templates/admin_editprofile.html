@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}Vehicle Parking App - Admin Parking Lots{% endblock %}
+{% block title %}Edit Profile{% endblock %}
 
 
 {% block navbar %}
@@ -21,28 +21,28 @@
   </nav>
 {% endblock %}
 
-
-
-
 {% block content %}
-<div class="container-fluid text-center font-weight-bold py-3 shadow mt-5" style="background-color: aquamarine;">
-  <h3 class="mb-0">Manage Parking Lots</h3>
+<div class="container mt-5 pt-4">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="container-fluid text-center font-weight-bold py-3 shadow mt-5" style="background-color: aquamarine;">
+            <h3 class="mb-0">Edit Profile</h3>
+        </div>
+
+      <form method="POST">
+        <div class="form-group">
+          <label><strong>Username</strong></label>
+          <input type="text" class="form-control" name="username" value="{{ user.username }}" required>
+        </div>
+        <div class="form-group">
+          <label><strong>Password</strong></label>
+          <input type="password" class="form-control" name="password" value="{{ user.password }}" required>
+        </div>
+        <div class="text-center mt-4">
+          <button type="submit" class="btn btn-primary">Update Profile</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
-<div class="d-flex justify-content-center mt-3">
-    <a href="/admin/add_lot" class="btn btn-primary mb-3 text-center">Add New Lot</a>
-</div>
-<table class="table table-bordered">
-  <tr><th>ID</th><th>Name</th><th>Max Spots</th><th>Actions</th></tr>
-  {% for lot in lots %}
-  <tr>
-    <td>{{ lot.id }}</td>
-    <td>{{ lot.prime_location_name }}</td>
-    <td>{{ lot.maximum_number_of_spots }}</td>
-    <td>
-      <a href="/admin/lot_details/{{ lot.id }}" class="btn btn-info btn-sm">Details</a>
-      <a href="/admin/deletelot/{{ lot.id }}" class="btn btn-danger btn-sm">Delete</a>
-    </td>
-  </tr>
-  {% endfor %}
-</table>
 {% endblock %}
