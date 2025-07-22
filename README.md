@@ -73,21 +73,34 @@ A full-stack web application for managing vehicle parking efficiently using Flas
 
 ````
 
+You're right — in **Option 2** (Set up virtual environment), the Markdown code block inside the numbered list is breaking the formatting because of incorrect indentation and use of triple backticks.
+
+Here's the **corrected version** that will render properly on GitHub:
+
 ---
 
+````markdown
 ## ⚙️ Setup Instructions
 
-1. **Clone this repository**  
+1. **Clone this repository**
    ```bash
    git clone https://github.com/yourusername/vehicle-parking-system.git
    cd vehicle-parking-system
 ````
 
 2. **Set up virtual environment (optional but recommended)**
+   For macOS/Linux:
 
    ```bash
    python -m venv venv
-   source venv/bin/activate  # For Windows: venv\Scripts\activate
+   source venv/bin/activate
+   ```
+
+   For Windows:
+
+   ```bash
+   python -m venv venv
+   venv\Scripts\activate
    ```
 
 3. **Install dependencies**
@@ -104,29 +117,6 @@ A full-stack web application for managing vehicle parking efficiently using Flas
 
 5. **Visit in browser:**
    Open [http://localhost:5054](http://localhost:5054)
-
----
-
-## 🧠 AI/LLM Usage
-
-AI/LLMs were used minimally (\~5–7%) for:
-
-* Bug fixing
-* Route optimization
-* UI structuring
-  All logic and design decisions were developer-driven.
-
----
-
-## 📽️ Demo Video
-
-▶️ **[Click to Watch the Demo](https://drive.google.com/file/d/18jhauNpSMuhFjG5ryEZK59afJkWGXszr/view?usp=sharing)**
-
----
-
-## 📄 License
-
-This project is for academic and learning purposes. Modify and build upon it freely. Attribution appreciated.
 
 ```
 
