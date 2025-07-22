@@ -1,30 +1,132 @@
-# MAD1_PROJECT
-# Vehicle Parking App - V1
 
-## Project Overview
+# 🚗 Vehicle Parking Management System
 
-This is a multi-user Vehicle Parking Management application developed as part of the Modern Application Development I (MAD1) course project. The app helps in managing multiple parking lots, parking spots, and parked vehicles, specifically designed for 4-wheeler parking.
+A full-stack web application for managing vehicle parking efficiently using Flask, SQLite, Bootstrap, and Jinja2. This project offers seamless interfaces for both **users** and **administrators** to interact with parking lots in real time.
 
-## Features
+> 📽️ **[Watch Demo Video](https://drive.google.com/file/d/18jhauNpSMuhFjG5ryEZK59afJkWGXszr/view?usp=sharing)**
 
-- Admin and User login system
-- Parking lot and spot management
-- Vehicle parking and exit tracking
-- Simple and responsive user interface using HTML, CSS, and Bootstrap
-- Backend developed using Flask (Python) with SQLite database
-- Templating handled via Jinja2
+---
 
-## Technologies Used
+## 👨‍💻 Author
 
-- **Backend:** Flask (Python)
-- **Frontend:** HTML, CSS, Bootstrap
-- **Templating Engine:** Jinja2
-- **Database:** SQLite
-- **Version Control:** Git & GitHub
+**Garvit Singh Bhatnagar**  
+- B.Tech (CSE - AI) @ Galgotias College of Engineering and Technology  
+- BS in Data Science @ IIT Madras  
+- ✉️ garvitsinghbhatnagar289@gmail.com
 
-## Conclusion
+---
 
-All problems and doubts during development were resolved manually through proper debugging and code correction without using automation tools. The project is functioning as expected and is ready for demonstration or viva.
+## 🧰 Tech Stack
 
+### Backend
+- **Flask** – Core web framework
+- **Flask-SQLAlchemy** – ORM for interacting with SQLite
+- **Flask-Session & Flash** – For authentication and notifications
 
-Prepared manually by Garvit Bhatnagar for the Vehicle Parking App (2025).
+### Frontend
+- **HTML5 + CSS3**
+- **Bootstrap 4.5** – Responsive UI
+- **Jinja2** – HTML templating engine
+
+### Database
+- **SQLite** – Lightweight file-based RDBMS
+
+---
+
+## 🚀 Features
+
+### 👤 User Panel
+- User registration & login
+- Edit profile
+- Book available parking spots
+- Release spots with auto cost calculation
+- View real-time availability
+- Reservation history
+- Parking summary dashboard
+
+### 🔧 Admin Panel
+- Secure admin login
+- Add, edit, or delete parking lots
+- Auto-generate parking spots
+- View and manage user profiles
+- Spot status analytics (available vs occupied)
+- Revenue and occupancy summary
+
+### 🔍 Search
+- Users can search parking lots by:
+  - Prime location
+  - Address
+  - PIN code
+
+---
+
+## 🗂️ Project Structure
+
+```
+
+├── app.py                 # Main Flask application
+├── models/
+│   └── database.py        # SQLAlchemy models
+├── templates/             # HTML templates (Jinja2)
+├── static/                # Static files (CSS, JS)
+├── parking.db             # SQLite database
+
+````
+
+---
+
+## ⚙️ Setup Instructions
+
+1. **Clone this repository**  
+   ```bash
+   git clone https://github.com/yourusername/vehicle-parking-system.git
+   cd vehicle-parking-system
+````
+
+2. **Set up virtual environment (optional but recommended)**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the application**
+
+   ```bash
+   python app.py
+   ```
+
+5. **Visit in browser:**
+   Open [http://localhost:5054](http://localhost:5054)
+
+---
+
+## 🧠 AI/LLM Usage
+
+AI/LLMs were used minimally (\~5–7%) for:
+
+* Bug fixing
+* Route optimization
+* UI structuring
+  All logic and design decisions were developer-driven.
+
+---
+
+## 📽️ Demo Video
+
+▶️ **[Click to Watch the Demo](https://drive.google.com/file/d/18jhauNpSMuhFjG5ryEZK59afJkWGXszr/view?usp=sharing)**
+
+---
+
+## 📄 License
+
+This project is for academic and learning purposes. Modify and build upon it freely. Attribution appreciated.
+
+```
+
