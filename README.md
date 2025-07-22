@@ -1,6 +1,3 @@
-Certainly! Here's your complete and detailed `README.md` file with all sections including the **correctly formatted Setup Instructions**, so you can copy-paste it directly into your GitHub project:
-
-
 # 🚗 Vehicle Parking Management System
 
 A full-stack web application for efficiently managing vehicle parking using Flask, SQLite, Bootstrap, and Jinja2. This project supports both **user** and **admin** functionalities with intuitive dashboards, spot booking, cost calculation, and dynamic summaries.
